@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.icall.icall.HomeFragment"
+    android:orientation="vertical">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/time_text"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="20:42"
+            android:textSize="42sp" />
+        <TextView
+            android:id="@+id/date_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2018/2/12 星期一"
+            android:layout_below="@id/time_text"
+            android:layout_alignLeft="@id/time_text"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/numofunread_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未读消息:(2)"
+            android:layout_below="@id/date_text"
+            android:layout_marginTop="15dp"
+            android:layout_alignLeft="@id/date_text"/>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp">
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/notification_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp">
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/others_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ICall</string>
+    <string name="home">主页</string>
+    <string name="notice">通知</string>
+    <string name="release">发布</string>
+    <string name="other">其他</string>
+    <string name="config">设置</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

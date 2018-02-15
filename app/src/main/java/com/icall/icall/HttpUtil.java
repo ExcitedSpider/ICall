@@ -14,6 +14,8 @@ import okhttp3.Response;
 
 public class HttpUtil {
     private final static String URL_ROOT = "http://192.168.1.15:8080";
+    //change this when test on real phone
+
     static boolean tryLogin(String username,String password){
         OkHttpClient client = new OkHttpClient();
 

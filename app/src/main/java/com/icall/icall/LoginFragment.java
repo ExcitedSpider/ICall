@@ -47,11 +47,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
         User user = new User();
         user.setAccount(account.getText().toString());
-        user.setPassword(account.getText().toString());
+        user.setPassword(password.getText().toString());
 
         final Boolean result = canLogin(user);
         try {
-            Thread.sleep(1000);
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -104,8 +103,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     }
 
     private Boolean canLogin(User user)
-    {//本方法是检查是否能够登陆，当服务器上线时重写
+    {//本方法是检查是否能够登陆
 
-        return false;
+        return HttpUtil.tryLogin(user.getAccount(),user.getPassword());
     }
 }

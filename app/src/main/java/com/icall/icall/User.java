@@ -6,18 +6,33 @@ package com.icall.icall;
 
 public class User {
     /*A bean of user profile*/
-
+    private int id;
     private String account;
     private String password;
     private String school;
     private String job;
 
     public User(){};
+    public User(int id,String account,String password,String school,String job){
+        this.id = id;
+        this.account = account;
+        this.password = password;
+        this.school = school;
+        this.job = job;
+    }
     public User(String account,String password,String school,String job){
         this.account = account;
         this.password = password;
         this.school = school;
         this.job = job;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getAccount() {

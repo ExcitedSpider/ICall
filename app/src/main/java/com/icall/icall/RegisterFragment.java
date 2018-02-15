@@ -33,6 +33,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
         return view;
     }
     private boolean localCheck(){
+        //todo:加入更多本地检验逻辑
         //本地检验输入逻辑
         EditText rePassword = view.findViewById(R.id.re_password);
         EditText rePasswordC = view.findViewById(R.id.re_password_confirm);
@@ -41,12 +42,12 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
             Toast.makeText(activity,"两次输入密码不相同",Toast.LENGTH_SHORT).show();
             return false;
         }
-        else if(rePassword.getText().toString().length()<=8){
-            Toast.makeText(activity,"密码长度应大于8",Toast.LENGTH_SHORT).show();
+        else if(rePassword.getText().toString().length()<8||rePassword.getText().toString().length()>18){
+            Toast.makeText(activity,"密码长度应介于8至18",Toast.LENGTH_SHORT).show();
             return false;
         }
-        else if(reAccount.getText().toString().length()<=8){
-            Toast.makeText(activity,"账号长度应大于8",Toast.LENGTH_SHORT).show();
+        else if(reAccount.getText().toString().length()<8||reAccount.getText().toString().length()>18){
+            Toast.makeText(activity,"账号长度应介于8至18",Toast.LENGTH_SHORT).show();
             return false;
         }else {
             return true;
@@ -67,15 +68,9 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
     }
 
     private boolean pushUserProfile(User user){
-        //本函数是将本地注册信息上传，服务器部署时重写
+        //本函数是将本地注册信息上传
         //若创建不成功，则返回false
-        try {
-            Thread.sleep(3000);
-            //模拟耗时
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return false;
+        return HttpUtil.tryRegister(user);
     }
     @Override
     public void onClick(View view) {
@@ -95,7 +90,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
                                 onCreateProfileFailed();
                             }
                         }
-                    }).start();
+                    }).start();break;
 
                 }
         }
@@ -106,6 +101,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
             public void run() {
                 Toast.makeText(activity,"创建成功！您可以登陆了！",Toast.LENGTH_SHORT).show();
                 closeProgressingDialog();
+                getFragmentManager().popBackStack();
             }
         });
     }

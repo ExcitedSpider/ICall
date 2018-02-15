@@ -1,4 +1,4 @@
-package com.icall.icall;
+package com.icall.icall.bean;
 
 /**
  * Created by 冯秋翼 on 2018/2/13.

@@ -1,4 +1,4 @@
-package com.icall.icall;
+package com.icall.icall.fragment;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -10,6 +10,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.icall.icall.LoginActivity;
+import com.icall.icall.R;
+import com.icall.icall.bean.User;
+import com.icall.icall.util.HttpUtil;
 
 
 //Todo:

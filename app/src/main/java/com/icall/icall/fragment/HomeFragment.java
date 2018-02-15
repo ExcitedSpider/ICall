@@ -1,4 +1,4 @@
-package com.icall.icall;
+package com.icall.icall.fragment;
 
 import android.content.Context;
 import android.net.Uri;
@@ -7,6 +7,8 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.icall.icall.R;
 
 
 /**

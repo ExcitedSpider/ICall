@@ -6,6 +6,8 @@ import android.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.icall.icall.fragment.LoginFragment;
+
 public class LoginActivity extends AppCompatActivity {
 
     private FragmentManager fragmentManager = null;

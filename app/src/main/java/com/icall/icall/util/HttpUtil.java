@@ -1,6 +1,8 @@
-package com.icall.icall;
+package com.icall.icall.util;
 
 import android.util.Log;
+
+import com.icall.icall.bean.User;
 
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -13,10 +15,11 @@ import okhttp3.Response;
  */
 
 public class HttpUtil {
-    private final static String URL_ROOT = "http://192.168.1.15:8080";
-    //change this when test on real phone
+    private final static String URL_ROOT = "http://10.0.2.2:8080";
+    //Change this when IP changed.
+    //http://10.0.2.2:8080 is the local computer host
 
-    static boolean tryLogin(String username,String password){
+    public static boolean tryLogin(String username,String password){
         OkHttpClient client = new OkHttpClient();
 
         Log.d("HttpUtil","LoginUser:"+username);
@@ -33,7 +36,7 @@ public class HttpUtil {
 
         return postAndGetResult(client,request);
     }
-    static boolean tryRegister(User user){
+    public static boolean tryRegister(User user){
         OkHttpClient client = new OkHttpClient();
 
         Log.d("HttpUtil","RegisterUser:"+user.getAccount());

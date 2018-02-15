@@ -1,4 +1,4 @@
-package com.icall.icall;
+package com.icall.icall.fragment;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -10,6 +10,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.icall.icall.R;
+import com.icall.icall.bean.User;
+import com.icall.icall.util.HttpUtil;
+import com.icall.icall.util.StringLocalCheck;
 
 
 public class RegisterFragment extends Fragment implements View.OnClickListener{
@@ -32,7 +37,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
 
         return view;
     }
-    private boolean localCheck(){
+    private boolean localCheck(User user){
         //todo:加入更多本地检验逻辑
         //本地检验输入逻辑
         EditText rePassword = view.findViewById(R.id.re_password);
@@ -41,16 +46,14 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
         if(!rePassword.getText().toString().equals(rePasswordC.getText().toString())){
             Toast.makeText(activity,"两次输入密码不相同",Toast.LENGTH_SHORT).show();
             return false;
-        }
-        else if(rePassword.getText().toString().length()<8||rePassword.getText().toString().length()>18){
-            Toast.makeText(activity,"密码长度应介于8至18",Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        else if(reAccount.getText().toString().length()<8||reAccount.getText().toString().length()>18){
-            Toast.makeText(activity,"账号长度应介于8至18",Toast.LENGTH_SHORT).show();
-            return false;
-        }else {
-            return true;
+        } else {
+            String message = StringLocalCheck.checkRegisterUserProfile(user);
+            if(message.equals("true"))
+                return true;
+            else {
+                Toast.makeText(activity,message,Toast.LENGTH_LONG).show();
+                return false;
+            }
         }
     }
 
@@ -78,13 +81,14 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
             case R.id.cancel_button:
                 getFragmentManager().popBackStack();break;
             case R.id.commit_button:
-                if(localCheck())
+                final User user = getUserProfile();
+                if(localCheck(user))
                 {
                     makeProgressDialog();
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
-                            if(pushUserProfile(getUserProfile())){
+                            if(pushUserProfile(user)){
                                 onCreateProfileSuccess();
                             }else {
                                 onCreateProfileFailed();

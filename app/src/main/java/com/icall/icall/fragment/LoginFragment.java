@@ -109,7 +109,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
 
     private Boolean canLogin(User user)
     {//本方法是检查是否能够登陆
-
-        return HttpUtil.tryLogin(user.getAccount(),user.getPassword());
+        LoginActivity loginActivity = (LoginActivity) activity;
+        return HttpUtil.tryLogin(user.getAccount(),user.getPassword(),loginActivity.getImei());
     }
 }
